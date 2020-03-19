@@ -34,3 +34,12 @@ h1 {
   font-style: oblique;
   text-align: center;
 }
+
+#searchResults {
+  color: red;
+  background-color: white;
+  font-size: 25px;
+  font-style: oblique;
+  text-align: center;
+}
+
