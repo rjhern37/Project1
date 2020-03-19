@@ -1,0 +1,36 @@
+h1 {
+  color: red;
+  background-color: white;
+  font-size: 40px;
+  font-style: oblique;
+  text-align: center;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+#zip {
+  color: red;
+  background-color: white;
+  font-size: 25px;
+  font-style: oblique;
+  text-align: center;
+}
+
+#cityOrTown {
+  color: red;
+  background-color: white;
+  font-size: 25px;
+  font-style: oblique;
+  text-align: center;
+}
+
+#type {
+  color: red;
+  background-color: white;
+  font-size: 25px;
+  font-style: oblique;
+  text-align: center;
+}
