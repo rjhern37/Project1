@@ -1,9 +1,50 @@
-h1 {
-  color: red;
-  background-color: white;
-  font-size: 40px;
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+input{
+  height: 30px;
+  width: 25%;
+}
+
+
+/* Prototype CSS */
+
+html{
+  font-family: 'Didact Gothic', serif;
+}
+
+.headerContainer {
+  color: yellow;
+  font-size: 25px;
   font-style: oblique;
   text-align: center;
+  margin: auto;
+  padding: auto;
+}
+
+body {
+  background-image: url("https://images.unsplash.com/photo-1447927228194-acfa3d1b45c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+  background-repeat: round;
+  
+}
+
+
+.bannerImg {
+  width: 850px;
+  border-radius: 5%;
+  align-content: center;
+
+}
+
+.topHeader {
+  align-content: center;
 }
 
 .responsive {
@@ -12,34 +53,133 @@ h1 {
 }
 
 #zip {
-  color: red;
-  background-color: white;
+  color: yellow;
   font-size: 25px;
   font-style: oblique;
   text-align: center;
+  border-style: hidden;
 }
 
 #cityOrTown {
-  color: red;
-  background-color: white;
+  color: yellow;
   font-size: 25px;
   font-style: oblique;
   text-align: center;
 }
 
 #type {
-  color: red;
-  background-color: white;
+  color:yellow;
   font-size: 25px;
   font-style: oblique;
   text-align: center;
 }
 
 #searchResults {
-  color: red;
-  background-color: white;
+  color: Yellow;
   font-size: 25px;
   font-style: oblique;
   text-align: center;
 }
+
+.footer{
+  color: yellow;
+  font-family: 'Didact Gothic', sans-serif;
+  padding-top: 150px;
+  text-align: center;
+
+}
+
+
+/* //Prototype search bar  */
+
+
+.search-close-icon{
+  display: none!important;
+  position: absolute;
+  top: 0;
+  left: 100%!important;
+  padding-left: 0px;
+  color: white;
+  transition: color .2s;
+  cursor: pointer;
+}
+
+
+.my-grey{
+  background: #f7f7f7;
+}
+
+input.search-field {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.54);
+  border: 0;
+  border-radius: 5px;
+  height: 36px;
+  padding: 8px 8px 8px 60px;
+  width: 200px;
+  background: #f7f7f7;
+  transition: background 0.2s, width .2s;
+}
+input.search-field:hover {
+  background: #ebebeb;
+}
+.searchbox {
+  position: relative;
+}
+::placeholder {
+  color: rgba(0, 0, 0, 0.54);
+}
+input.search-field:focus {
+  outline: none;
+  width: 500px;
+  color: #212121;
+}
+input.search-field:focus:hover {
+  background: #f7f7f7;
+}
+.search-icon {
+  position: relative;
+  top: 0;
+  padding-left: 20px;
+  color: yellow;
+}
+
+.search-heading {
+  color: #757575;
+  display: block;
+  font-size: 12px;
+  line-height: 30px;
+}
+input.search-field ~ .search-popup {
+  overflow: hidden;
+  left: 0px;
+  min-height: 50px;
+  max-height: 700px;
+  width: 200px;
+  top: -450px; 
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  transition: width .2s, top .2s ease-in-out;
+  border-radius: 2px;
+  background-color: #fff;
+}
+input.search-field:focus ~ .search-popup {
+  width: 500px;
+  top: 50px;
+}
+
+
+@media only screen and (max-width: 300px) {
+  .bannerImg {
+    height: 100px;
+    width: 100%;
+  }
+
+  #map {
+      height: 100px;
+      width: 100%;
+
+  }
+ }
 
