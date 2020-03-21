@@ -1,11 +1,6 @@
 var searchField = $(".searchField");
 var queryParams={
-    locations1:{
-
-    },
-    location2:{
-
-    }
+    locations: [],
     
 };
 
@@ -14,7 +9,6 @@ if(navigator.geolocation){
         //console.log(position);
         queryParams.latitude = position.coords.latitude;
         queryParams.longitude = position.coords.longitude;
-
         initMap();
     });
 }else{
@@ -24,24 +18,32 @@ if(navigator.geolocation){
 
 var map;
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: queryParams.latitude, lng: queryParams.longitude},
-    zoom: 8
-  });
-  
-  var marker = new google.maps.Marker({
-    position: firstpin,  //queryParams.location1.
-    map: map,
-    title: 'Hello World!'
-  });
+    zoom: 12
+    });
+    console.log(queryParams.locations.length);
+    if (queryParams.locations.length != 0){
+        console.log(queryParams.locations.length);
+        for (var i = 0; i < queryParams.locations.length; i++){
+            console.log("Running")
+            var marker = new google.maps.Marker({
+            position: queryParams.locations[i],
+            map: map,
+            title: 'Hello World!'
+            });
+        }
+    }
 }
+$(".showOptions").on("click", function(){
+    queryParams.term = "vegan";
+    console.log(queryParams);
+    lookupInfo();
+})
 
 
 $(".searchLocale").on("click", function(){
-    
-    var searchTerm = searchField.val();
-    //console.log(searchTerm);
-    
+    var searchTerm = searchField.val();  
     queryParams = { 
         // "appid": "CHxZJb0CdGwHtBXXsf_zhyCO559XQ5cDfBGbEHxLM77vW2zz4gwxPOfbS2WNowgtgZrWBg_4-2hQoKn-B_hlh_z8cNJgFXZkEZ635hT0JYCse5mei4tFMuZI8QBtXnYx", 
         "term": "vegan",
@@ -57,31 +59,7 @@ $(".searchLocale").on("click", function(){
     }
 })
 
-$(".showOptions").on("click", function(){
-    queryParams = { 
-        // "appid": "CHxZJb0CdGwHtBXXsf_zhyCO559XQ5cDfBGbEHxLM77vW2zz4gwxPOfbS2WNowgtgZrWBg_4-2hQoKn-B_hlh_z8cNJgFXZkEZ635hT0JYCse5mei4tFMuZI8QBtXnYx", 
-        "term": "vegan",
-        //"location": searchTerm,
-    };
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(function(position){  //Asynchronous like an ajax call.
-            /*
-            for (var i = 0; i < 5; i++){
-                queryParams.location.latitude = position.businesses[i].coordinates.latitude;
-                queryParams.location.longitude = position.businesses[i].coordinates.latitude;
-            }
-            console.log(queryParams);
-            //lookupInfo();
-            //initMap2();
-            */
-        });
-    }else{
-        alert("Geolocation not supported by your browser");
-    }
-    //console.log(navigator.geolocation);
-    //lookupInfo();
 
-})
 
 function lookupInfo(){
     var queryURL = "https://api.yelp.com/v3/businesses/search";
@@ -94,6 +72,15 @@ function lookupInfo(){
         }
     }).done((response) => {
         console.log(response)
+        for (var i = 0; i < response.businesses.length; i++){
+            var currentLocal = {
+                lat : response.businesses[i].coordinates.latitude,
+                lng : response.businesses[i].coordinates.longitude,
+            }
+            queryParams.locations.push(currentLocal);
+        }
+        initMap();
+        console.log(queryParams);
     }).catch((error) => {
         console.log("error")
     })
