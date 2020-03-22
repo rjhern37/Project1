@@ -30,8 +30,25 @@ function initMap() {
             map: map,
             title: queryParams.locations[i].name,
             });
+            
             google.maps.event.addListener(marker, "click", function(e){
-                console.log(e);
+                //If the name of the restaurant I clicked on matches the name of the 
+                //restaurant objects, then we display the information on the div on the right hand side.
+                var displayInfo =  $('#restaurantInfo');
+                displayInfo.text("");
+                console.log(e.tb.toElement.title);
+                for (var i =0; i < queryParams.locations.length; i++){
+                    if (e.tb.toElement.title == queryParams.locations[i].name){
+                       displayInfo.append(`<h2> Name: <a href= "${queryParams.locations[i].url}">${queryParams.locations[i].name}</a> </h2>`);
+                       displayInfo.append(`<img src="${queryParams.locations[i].imageurl}" width = "30%" height = "350px;">`);
+                       displayInfo.append(`<h3> Rating: ${queryParams.locations[i].rating} </h3>`);
+                       displayInfo.append(`<h3> Address: ${queryParams.locations[i].location} </h3>`);
+                       displayInfo.append(`<h3> Phone Number: ${queryParams.locations[i].number} </h3>`);
+                       //console.log(queryParams.locations[i].imageurl);
+                    }
+                }
+                //historySearch.append(`<button style="width:82%" class = "${cityHistory.name}"  id="history">${ cityHistory.name }</button>`);
+
             })
         }
     }
@@ -94,6 +111,12 @@ function lookupInfo(){
                 lat : response.businesses[i].coordinates.latitude,
                 lng : response.businesses[i].coordinates.longitude,
                 name : response.businesses[i].name,
+                imageurl : response.businesses[i].image_url,
+                url : response.businesses[i].url,
+                rating : response.businesses[i].rating,
+                location : response.businesses[i].location.display_address[0],
+                number : response.businesses[i].display_phone,
+
             }
             queryParams.locations.push(currentLocal);
         }

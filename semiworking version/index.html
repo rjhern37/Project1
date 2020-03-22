@@ -10,7 +10,9 @@
          * element that contains the map. 
          
          */
+        
         #map {
+          float:left;
           height: 75%;
           width:50%;
         }
@@ -25,12 +27,17 @@
 <body>
     <input class="searchField" value="please enter a city/state/zipcode" type = "text">
     <button class="searchLocale">Search</button>
-
-
     <hr>
     <button class="showOptions">Show Vegan Options Around Me!</button>
+    
+      <div id="map"></div>
+      <div id ="restaurantInfo">
+        
+      </div>
+   
+    
 
-    <div id="map"></div>
+
     
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

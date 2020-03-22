@@ -8,6 +8,10 @@ button {
     display: inline-block;
     font-size: 16px;
 }
+#restaurantInfo{
+    
+    font-size: 20px;
+}
 input{
     height: 30px;
     width: 25%;
