@@ -8,16 +8,18 @@ button {
     display: inline-block;
     font-size: 16px;
 }
+
 input{
     height: 30px;
     width: 25%;
 }
+
 #map {
     height: 75%;
-    width:50%;
-    
+    width: 50%;
   }
-  html, body {
+
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -30,5 +32,12 @@ input{
       background-color: #4CAF50;
       color: white;
       text-align: center;
+  }
 
+  .jumbotron {
+    height: 150px;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
