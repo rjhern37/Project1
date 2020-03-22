@@ -30,6 +30,9 @@ function initMap() {
             map: map,
             title: queryParams.locations[i].name,
             });
+            google.maps.event.addListener(marker, "click", function(e){
+                console.log(e);
+            })
         }
     }
 }
