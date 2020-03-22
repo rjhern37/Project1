@@ -15,54 +15,68 @@ if(navigator.geolocation){
     alert("Geolocation not supported by your browser");
 }
 
-
 var map;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: queryParams.latitude, lng: queryParams.longitude},
-    zoom: 12
+        center: {lat: queryParams.latitude, lng: queryParams.longitude},
+        zoom: 11
     });
     console.log(queryParams.locations.length);
     if (queryParams.locations.length != 0){
         console.log(queryParams.locations.length);
         for (var i = 0; i < queryParams.locations.length; i++){
-            console.log("Running")
             var marker = new google.maps.Marker({
             position: queryParams.locations[i],
             map: map,
-            title: 'Hello World!'
+            title: queryParams.locations[i].name,
             });
         }
     }
 }
+
 $(".showOptions").on("click", function(){
+    qeuryParams = {  //default lat and lon are the user location. (from the if statement above.)
+        locations:[],
+    }
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function(position){  //Asynchronous like an ajax call.
+            //console.log(position);
+            queryParams.latitude = position.coords.latitude;
+            queryParams.longitude = position.coords.longitude;
+            initMap();
+        });
+    }else{
+        alert("Geolocation not supported by your browser");
+    }
     queryParams.term = "vegan";
     console.log(queryParams);
     lookupInfo();
 })
 
-
 $(".searchLocale").on("click", function(){
     var searchTerm = searchField.val();  
     queryParams = { 
-        // "appid": "CHxZJb0CdGwHtBXXsf_zhyCO559XQ5cDfBGbEHxLM77vW2zz4gwxPOfbS2WNowgtgZrWBg_4-2hQoKn-B_hlh_z8cNJgFXZkEZ635hT0JYCse5mei4tFMuZI8QBtXnYx", 
         "term": "vegan",
-        "location": searchTerm,
+        locations:[],
     };
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(function(position){  //Asynchronous like an ajax call.
-            console.log("looking for " + searchTerm);
-            lookupInfo();
-        });
-    }else{
-        alert("Geolocation not supported by your browser");
-    }
+    getLatLon(searchTerm);
 })
 
-
+function getLatLon(locale){
+    var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + locale + "&key=AIzaSyAjby3pU0mhZRvOI5WS5YoOkWUpd6XJ27o"
+    $.ajax({
+        url: queryURL,
+        method:'GET'
+    }).done((response)=>{
+        console.log(response);
+        queryParams.latitude = response.results[0].geometry.location.lat;
+        queryParams.longitude = response.results[0].geometry.location.lng;
+        console.log(queryParams.latitude);
+        lookupInfo();
+    })
+}
 
 function lookupInfo(){
-    var queryURL = "https://api.yelp.com/v3/businesses/search";
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?' + $.param(queryParams),
         method: 'GET',
@@ -76,6 +90,7 @@ function lookupInfo(){
             var currentLocal = {
                 lat : response.businesses[i].coordinates.latitude,
                 lng : response.businesses[i].coordinates.longitude,
+                name : response.businesses[i].name,
             }
             queryParams.locations.push(currentLocal);
         }
@@ -84,5 +99,6 @@ function lookupInfo(){
     }).catch((error) => {
         console.log("error")
     })
-
 }
+
+//Use css to reduce the opacity/ or pointer event (turn it to none)/ disable class.
