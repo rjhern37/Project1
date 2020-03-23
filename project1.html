@@ -1,62 +1,73 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<html lang="en">
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="project1.css"/>
-    <link rel="javascript" href="script.js"/>
-    <title>Plant Mobile</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="project1.css">
+  <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Old+Standard+TT&display=swap" rel="stylesheet">
+  <title>Document</title>
 
-  <body background="https://images.unsplash.com/photo-1447927228194-acfa3d1b45c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="responsive">
-    <h1>Plant Mobile</h1>
-    <img src="https://images.unsplash.com/photo-1486485764572-92b96f21882a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="Eat what makes you happy" width="100%" height="400"> 
-   
+</head>
 
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-      <!--Search Criteria  -->
-      
-      <div class="searchCriteria"> 
-        <form>
-            <h4 id='zip'>Zip Code</h4>
-            <input id="zipCode" placeholder="Enter Zip Code"><br>
-            <h4 id='cityOrTown'>City or Town</h4>
-            <input id="cityTown" placeholder="Enter City or Town"><br>
-            <h4 id='type'>Type of Food</h4>
-                <input type="radio" id="firstType">
-                <label>First Type</label><br>
-                <input type="radio" id="secondType">
-                <label>Second Type</label><br>
-                <input type="radio" id="thirdType">
-                <label>Second Type</label><br>
-                <input type="radio" id="fourthType">
-                <label>Fourth Type</label><br>
-​
-            <button id='search'>Search</button>
-        </form>
+
+
+
+
+
+<body style="background-color: white;">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="Screen Shot 2020-03-23 at 5.19.04 PM.png" alt="Plant Mobile Logo" width="200"
+          height="100">
+      </a>
+      <div class="jumbotron">
+        <div class="container for-about">
+          <h1></h1>
+        </div>
+      </div>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-    <!-- This section is for the results/map. I added the list items but we will probably have JS add them -->
-    <div class='results'>
-        <h3 id='searchResults'>Search Results</h3>
-        <ol id="restaurantResults">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ol>
-​
-    </div>
-    
-    <footer>
-        
-    </footer>
-    
-  </body>
+  </nav>
+
+  <hr>
+  <br>
+  <div class="topBtn">
+    <input class="searchField" placeholder="Please enter a location" type="text">
+    <button class="searchLocale">Search</button>
+    <button class="showOptions">Show Vegan Options Around Me!</button>
+  </div>
+
+  <div id="map"></div>
+
+  <div id="restaurantInfo">
+
+  </div>
+
+
+  <footer class="footer">
+    Plant Mobile
+    <p class="subText">Created by Rachel, Jee, Ray, and Joel.</p>
+
+
+  </footer>
+
+
+
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="project1.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjby3pU0mhZRvOI5WS5YoOkWUpd6XJ27o&callback=initMap" async
+  defer></script>
+
+
 </html>
