@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Old+Standard+TT&display=swap" rel="stylesheet">
+  <title>Plant Mobile</title>
+
+</head>
+
+
+
+
+
+
+<body style="background-color: white;">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="Assets\plantmobilelogo1.png" alt="Plant Mobile Logo" width="200"
+          height="100">
+      </a>
+      <div class="jumbotron">
+        <div class="container for-about">
+          <h1></h1>
+        </div>
+      </div>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  </nav>
+
+
+  <hr>
+  <br>
+  <div class="topBtn">
+    <input class="searchField" placeholder="Please enter a location" type="text">
+    <button class="searchLocale">Search</button>
+    <button class="showOptions">Show Vegan Options Around Me!</button>
+  </div>
+
+  <div id="map"></div>
+
+  <div id="restaurantInfo">
+
+  </div>
+
+
+  <footer class="footer">
+    Plant Mobile
+    <p class="subText">Created by Rachel, Jee, Ray, and Joel.</p>
+
+
+  </footer>
+
+
+
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="script.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjby3pU0mhZRvOI5WS5YoOkWUpd6XJ27o&callback=initMap" async
+  defer></script>
+
+
+</html>
+

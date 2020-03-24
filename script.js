@@ -1,4 +1,3 @@
-
 //Use css to reduce the opacity/ or pointer event (turn it to none)/ disable class.
 
 var searchField = $(".searchField");
